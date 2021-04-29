@@ -27,3 +27,4 @@ Current goals:
 2. Expand on the various lists with more words. Focus on the various clothing lists, as well as the genre randomizer in particular.
 3. Come up with a proper answer for what the "random game generator"'s results would look like, and begin forming lists for it.
 4. Recode the random location generator. I largely patched in old programming, but after starting on the character generator, I liked its format of "outfit style: asdf, outfit: asdf" much more than the attempt at compiling the results into a sentence.
+5. Realized I never finished the outfit function of the character generator. I focused so much on the more tedious complicated outfit, that I didn't actually do the code for generating simpler outfits possible.
