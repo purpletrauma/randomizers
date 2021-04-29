@@ -16,7 +16,7 @@ Random location: Comes up with a random location, with guidance on setting, styl
 
 Random genre: I want to populate the list with more words, but taking the trend of terms like "steampunk, cyberpunk, dieselpunk, ETC" I made a randomizer that added "punk" to a random list of words so that I could have more genres to work with. It was my intention to replace "punk" with other words as well, but the results for what the genre could possibly be became too esoteric.
 
-Random character: lots of research into fashion styles, and searching for usable lists online to plug into the code so that I have hundreds of possible results for a single given return, rather than what I could think of or find. Just something novel I thought I may try to solicit to artists to see how they like it or what they do.
+Random character: generates a random character with a species, age, gender, outfit style, outfit, personality, two colors, quirk, and if chosen to turn on, a kink. Found that last one kinda amusing.Just something novel I thought I may try to solicit to artists to see how they like it or what they do.
 
 Random game: a random game idea. Currently haven't coded this one, as I am still undecided on how it would be expressed. What random prompts would be given. Currently thinking along the ideas of: genre, random word like you'de get for a jam project, random "mechanic" which is just a list of basic ideas that are mostly non-standard for what to do with gameplay.
 
