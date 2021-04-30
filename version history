@@ -1,0 +1,18 @@
+This is here for my own reference and documentation.
+
+- Purpletrauma
+
+V 0.1: initial commit. A mostly functional CLI set of randomizers, with a couple things on the to-do list still before I declare it 1.0 and begin work on the 2.0 GUI version.
+
+V 0.2: Fixed an incomplete part of the code for the random outfit on the character generator. I focused so much on the harder part, I forgot to do the easy half. Revised location generator to no longer compile results into a sentence, but a set of keywords like the character randomizer. I like this set-up better. More upfront about throwing the content at the user to interpret it:
+
+"Genre: paranormalpunk
+Location: shopping center
+Social Structure: a team
+Species: hairless dwarves."
+
+Rather than "A paranormalpunk shopping center populated by a team of hairless dwarves."
+
+Hairless dwarves is such a perfect combination possibility. So is paranormalpunk, really.
+
+Also added a check for legless species, after not noticing that I was reading from the wrong variable for an hour, resulting in all True results from the function.

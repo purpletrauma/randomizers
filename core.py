@@ -48,7 +48,7 @@ def randomLocation(runTimes, locationSize, isSilly):
 
 
     for i in range(runTimes):
-        results.append("A " + choice(theGenre) + " themed " + choice(theLocation) + " populated by " + choice(theSociety) + " of " + choice(theAdjective) + " " + choice(theSpecies) + ".")
+        results.append("Genre: " + choice(theGenre) + "\nLocation: " + choice(theLocation) + "\nSocial Structure: " + choice(theSociety) + "\nSpecies: " + choice(theAdjective) + " " + choice(theSpecies) + ".\n")
     return results
 
 def randomGame():
@@ -75,11 +75,12 @@ def randomCharacter(runTimes, outfitDetail, crossGenderPref, isKinky,   isSilly)
     for i in range(runTimes):
         theGender = choice(randomLists.genderList)
         finalAge = choices(randomLists.ageList, k=1,  weights=(1, 4, 4, 3, 3, 2, 1)) 
-        buildResults = "Species: " + choice(randomLists.singleSpeciesList) + "\n"
+        theSpecies = choice(randomLists.singleSpeciesList)
+        buildResults = "Species: " + theSpecies + "\n"
         buildResults += "Age: " + choice(finalAge)  + "\n"
         buildResults += "Gender: " + theGender + "\n"
         buildResults += "Outfit Style: " + choice(localOutfit) + "\n"
-        buildResults += "Outfit: " + outfitStyle(outfitDetail,  theGender, crossGenderPref, isSilly) + "\n"
+        buildResults += "Outfit: " + outfitStyle(outfitDetail, theSpecies,  theGender, crossGenderPref, isSilly) + "\n"
         buildResults += "Personality: " + choice(randomLists.personalityList)+ "\n"
         buildResults += "Primary and Secondary color: " + listToString(sample(randomLists.colorList,  2)) + "\n"
         buildResults += "Character quirk: "+ choice(randomLists.quirkList) + "\n"

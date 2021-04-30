@@ -15,16 +15,17 @@ def listToString(s):
     return str1 
 
 #Checking for whether a species has legs to wear pants with.
+#This might not be the best results, but I kept reworking it until I realized the check for the results of this function was looking for a string "False" instead of a boolean False.
 def leglessCheck(species):
     hasLegs = True
     leglessList = randomLists.leglessSpeciesList
     for i in leglessList:
-        if i == species:
+        if i in str(species):
             hasLegs = False
     return hasLegs
 
 #This needed to be its own function: generating the gender randomization code. It needs to take one randomized variable, 3 user-chosen variables, and create a combination of 12 possible results based on those choices, one of which just alters the complexity of one of the others...
-def outfitStyle(outfitDetail,  theGender, crossGenderPref,  isSilly):
+def outfitStyle(outfitDetail, theSpecies,  theGender, crossGenderPref,  isSilly):
     
     #A reminder, crossGenderPref is 0 standard, 1 for crossgender, 2 for anything goes.
     theOutfit = "nude"
@@ -51,7 +52,7 @@ def outfitStyle(outfitDetail,  theGender, crossGenderPref,  isSilly):
             localTop = localTop + randomLists.masculineTopList
             localBottom = localBottom + randomLists.masculineBottomList
             localOuter = localOuter + randomLists.masculineOuterList
-            localAccessory = localAccessry + randomLists.masculineAccessoryList
+            localAccessory = localAccessory + randomLists.masculineAccessoryList
             localTop = localTop + randomLists.feminineTopList
             localBottom = localBottom + randomLists.feminineBottomList
             localOuter = localOuter + randomLists.feminineOuterList
@@ -70,20 +71,30 @@ def outfitStyle(outfitDetail,  theGender, crossGenderPref,  isSilly):
             
     else: 
         localOutfit = randomLists.unisexBodyList
-        theOutfit = "undetailed "
         if isSilly:
-            theOutfit +="silly "
-            
+            localOutfit = localOutfit + randomLists.sillyBodyList
         if crossGenderPref == 2:
-            theOutfit += "genderneutral"
+            localOutfit = localOutfit + randomLists.feminineBodyList + randomLists.masculineBodyList
         elif theGender == "male":
-            theOutfit += "mascule"
+           localOutfit = localOutfit + randomLists.masculineBodyList
         else: 
-            theOutfit += "feminine"
+           localOutfit = localOutfit + randomLists.feminineBodyList
 
+    #If only because it feels more coherent in the code, go ahead and find the results now.
+    theTop = "\n    Top: " +  str(choice(localTop))
+    theBottom = "\n     Bottom: " + str(choice(localBottom))
+    theOuter =  "\n     Outerwear: " + str(choice(localOuter))
+    theAccessory = "\n     Accessory: " + str(choice(localAccessory))    
     
+    #True or false: does it have legs?
+    hasLegs = leglessCheck(theSpecies)
+    
+    #Empty the bottom clothing if it came back false.
+    if hasLegs == False:
+        theBottom = ""
+        
     if outfitDetail == '1':
-        theOutfit = "\n     Top: " + str(choice(localTop)) + "\n     Bottom: " + str(choice(localBottom)) + "\n     Outerwear: " + str(choice(localOuter)) + "\n     Accessory: " + str(choice(localAccessory))
+        theOutfit = theTop + theBottom + theOuter + theAccessory
     else: 
         theOutfit = choice(localOutfit)
     return theOutfit
