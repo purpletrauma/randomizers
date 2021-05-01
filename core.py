@@ -14,41 +14,59 @@ def randomPhrase(runTimes):
     #Read an input file of text, make each line into a different list item.
     with open('input') as f:
         quoteFile = (f.readlines())
-    #Remove the "\n" from the list.
+    #Remove the line breaks from the strings themselves.
     quoteFile = [word.strip() for word in quoteFile]
-    #If the resulting list has fewer items than the number requested, then reduce it to match.
+    #If the resulting list has fewer items than the number requested, then only return the quotes available.
     if len(quoteFile) < runTimes:
         runTimes = len(quoteFile)
-    #Return the requested list of items.
+    #Return the requested list of items, nonrepeating randomization.
     results = sample(quoteFile, runTimes)
     return results
 
 #Revising my old code. Basically the same, just with better lists and data structure.
 def randomLocation(runTimes, locationSize, isSilly):
     #First, since they can be altered, make the local variables equal the global ones.
-    theLocation = randomLists.locationList
-    theSociety = randomLists.societyList
+    theLocation = randomLists.smallLocation
+    theSociety = randomLists.smallSocialStructure
     theGenre = randomLists.genreList
     theAdjective = randomLists.adjectiveList
     theSpecies = randomLists.speciesList
+    
+    #As a standard, populate an empty list for variables that may need it.
     results = list()
     del results[:]
+    finalAdjective = str()
 
-    #Next, alter it as needed from input.
+    #Next, alter it as needed for the chosen size
     if locationSize == 1:
-        theLocation = randomLists.secondLocation + randomLists.locationList
-        theSociety = randomLists.secondSociety + randomLists.societyList
+        theLocation = theLocation + randomLists.mediumLocation
+        theSociety = theSociety + randomLists.bigSocialStructure
     elif locationSize == 2:
-        theLocation = randomLists.thirdLocation
-        theSociety = randomLists.secondSociety
+        theLocation = randomLists.bigLocation
+        theSociety = randomLists.bigSocialStructure
+        
+    #Silly mode alterations.
     if isSilly == True:
-        newGenre = randomGenre(50)
-        theGenre = newGenre
-        theAdjective = randomLists.sillyAdjectiveList
+        theAdjective = theAdjective + randomLists.sillyAdjectiveList
 
-
+    #Craft and return the results in a string.
     for i in range(runTimes):
-        results.append("Genre: " + choice(theGenre) + "\nLocation: " + choice(theLocation) + "\nSocial Structure: " + choice(theSociety) + "\nSpecies: " + choice(theAdjective) + " " + choice(theSpecies) + ".\n")
+        #Internal silly mode loop to deal with the silly adjectives.
+        #As I tweaked how this worked, it became a more extensive population
+        #of the variables before reaching the append command.
+        if isSilly == True:
+            finalLocation = choice(theAdjective) + " " + choice(theLocation)
+            finalGenre = randomGenre(1) + " " + choice(theGenre)
+            tempAdjective = sample(theAdjective,  2)
+            for i in tempAdjective:
+                finalAdjective = finalAdjective + i + " "
+        else:
+            finalLocation = choice(theLocation)
+            finalGenre = choice(theGenre)
+            finalAdjective = choice(theAdjective) + " "
+        results.append("Genre: " + finalGenre + "\nLocation: " + finalLocation + "\nSocial Structure: " + choice(theSociety) + "\nSpecies: " + finalAdjective + choice(theSpecies) + " people.\n")
+        finalAdjective = ""
+        finalLocation = ""
     return results
 
 def randomGame():
@@ -58,8 +76,11 @@ def randomGenre(runTimes):
     results = list()
     del results[:]
     
-    for i in range(runTimes):
-        results.append(choice(randomLists.punkGenre) + "punk")
+    if runTimes > 1:   
+        for i in range(runTimes):
+            results.append(choice(randomLists.punkGenre) + "punk")
+    else:
+        results = choice(randomLists.punkGenre) + "punk"
     
     return results
 
@@ -75,7 +96,7 @@ def randomCharacter(runTimes, outfitDetail, crossGenderPref, isKinky,   isSilly)
     for i in range(runTimes):
         theGender = choice(randomLists.genderList)
         finalAge = choices(randomLists.ageList, k=1,  weights=(1, 4, 4, 3, 3, 2, 1)) 
-        theSpecies = choice(randomLists.singleSpeciesList)
+        theSpecies = choice(randomLists.speciesList)
         buildResults = "Species: " + theSpecies + "\n"
         buildResults += "Age: " + choice(finalAge)  + "\n"
         buildResults += "Gender: " + theGender + "\n"

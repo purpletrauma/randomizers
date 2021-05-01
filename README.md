@@ -1,4 +1,4 @@
-# randomizers V0.2
+# randomizers V0.3
 A practice project of randomizing random things I think would be amusing or practical.
 
 Project goals:
@@ -18,10 +18,10 @@ Random genre: I want to populate the list with more words, but taking the trend 
 
 Random character: generates a random character with a species, age, gender, outfit style, outfit, personality, two colors, quirk, and if chosen to turn on, a kink. Found that last one kinda amusing.
 
-Random game: a random game idea. Currently haven't coded this one, as I am still undecided on how it would be expressed. What random prompts would be given. Currently thinking along the ideas of: genre, random word like you'de get for a jam project, random "mechanic" which is just a list of basic ideas that are mostly non-standard for what to do with gameplay.
+Random game: a random game idea. Currently haven't coded this one, as I am still undecided on how it would be expressed. What random prompts would be given. Currently thinking along the ideas of: one-word art prompt like you would get for most game jams, and multiple modes that give progressively more information to work off of. Avoid telling the user what the gameplay is like: this is meant to be a prompt to work off of for coming up with ideas. One function I'm considering is a combination of game mechanic + twist. What the twist is, I am unsure yet. Kinda liking the idea of making it a random adjective from the existing list, and like most items that take a random adjective, leave it to the user to interpret what "moist jumping" or "cute respawn" or "panicky store" means for a game. It's a very artistic approach to game design, and I like that.
 
 Current goals:
 1. Expand on the various lists with more words. Focus on the various clothing lists, as well as the genre randomizer in particular.
 2. Come up with a proper answer for what the "random game generator"'s results would look like, and begin forming lists for it.
 3. Add new lists for either the game generator, or potential future randomizer ideas. Those unpopulated lists are: videogame genres, videogame mechanics, videogame tags. I also would like one for greek words that is a dictionary datatype so that it can be translated on the fly. So that I can pick a random one, add "philia" or "phobia" and provide translation. Maybe more later if I can wrap my head around methodologies for scientific taxonomy of various purposes. It is a somewhat vague topic to look up on its own.
-4. If I expand into basic Python machine learning libraries, could I scour, say, imdb of its films using a script, create designated datasets for the film summary, quotes section, actors sections, ETC, and see what it comes up with when I run several independent AI into creating a complete profile for a fictional film? An idea for later, possibly after I hit 2.0.
+4. If I expand into basic Python machine learning libraries, could I scour, say, imdb of its films using a script, create designated datasets for the film summary, quotes section, actors sections, ETC, and see what it comes up with when I run several AI processes designated to specific sections, creating a complete profile for a fictional film? An idea for later, possibly after I hit 2.0. Machine Learning is on the periphery of packages I wish to try, and that sounds like an amusing one.

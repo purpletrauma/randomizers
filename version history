@@ -16,3 +16,19 @@ Rather than "A paranormalpunk shopping center populated by a team of hairless dw
 Hairless dwarves is such a perfect combination possibility. So is paranormalpunk, really.
 
 Also added a check for legless species, after not noticing that I was reading from the wrong variable for an hour, resulting in all True results from the function.
+
+V 0.3: I sat back and did lots of minor things.
+
+Altered many inline comments, removed a few blank results that found their way into my lists due to how I populated them with copied online lists that I find-and-replaced to fit into the code. Renamed some variables to be clearer about their contents among the lists.
+
+Added a bit to the to-do list, and.. really, I worked on revising and improving the lists in general this time, that's where most of the effort went.
+
+Had the idea to make a list of lists to manage singular/plural forms of words, then realized I could cut out the singular form of that particular list by adding a single word to the location randomizer, simplifying the work immensely.
+
+May keep in mind the idea of a list of lists for later, though. Say, if I get my list of greek words, so I can pull a random result from the main list, get ["arachne", "spider"] and then pull from the proper indexes to use both the Greek and English forms of the word.
+
+Tweaked the random location generator to give more varried results, especially in silly mode.
+
+Altered the randomizer that adds "punk" to the end of a random word to make a genre so that if 1 or fewer results were requested of it, it gives a single string result.
+
+Attempted to start the game generator in the hopes of ticking that off and declaring this V1.0 so that I could begin on GUI development, but I'm still undecided on how it should function enough to begin. I have some ideas and am getting there, though.
