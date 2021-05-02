@@ -2,20 +2,15 @@ This is here for my own reference and documentation.
 
 - Purpletrauma
 
-V 0.1: initial commit. A mostly functional CLI set of randomizers, with a couple things on the to-do list still before I declare it 1.0 and begin work on the 2.0 GUI version.
 
-V 0.2: Fixed an incomplete part of the code for the random outfit on the character generator. I focused so much on the harder part, I forgot to do the easy half. Revised location generator to no longer compile results into a sentence, but a set of keywords like the character randomizer. I like this set-up better. More upfront about throwing the content at the user to interpret it:
+v 0.4: got to cracking shortly after the last update, and added more lists, and begun the random game generator.
 
-"Genre: paranormalpunk
-Location: shopping center
-Social Structure: a team
-Species: hairless dwarves."
+More or less, I did some more idle work on the lists, and added 3 new lists in preparation for the game generator, as well as spent a lot of time considering how the game generator will work.
 
-Rather than "A paranormalpunk shopping center populated by a team of hairless dwarves."
+I feel my gut feelings have served me well through the other randomizers and getting the right combination for specific and general to make many possible combinations, but produce coherent ideas from them. So I spent hours working through those gut feelings.
 
-Hairless dwarves is such a perfect combination possibility. So is paranormalpunk, really.
+Currently I feel I am close with the description on the readme, but that I'm not quite there.
 
-Also added a check for legless species, after not noticing that I was reading from the wrong variable for an hour, resulting in all True results from the function.
 
 V 0.3: I sat back and did lots of minor things.
 
@@ -33,10 +28,20 @@ Altered the randomizer that adds "punk" to the end of a random word to make a ge
 
 Attempted to start the game generator in the hopes of ticking that off and declaring this V1.0 so that I could begin on GUI development, but I'm still undecided on how it should function enough to begin. I have some ideas and am getting there, though.
 
-v 0.4: got to cracking shortly after the last update, and added more lists, and begun the random game generator.
 
-More or less, I did some more idle work on the lists, and added 3 new lists in preparation for the game generator, as well as spent a lot of time considering how the game generator will work.
+V 0.2: Fixed an incomplete part of the code for the random outfit on the character generator. I focused so much on the harder part, I forgot to do the easy half. Revised location generator to no longer compile results into a sentence, but a set of keywords like the character randomizer. I like this set-up better. More upfront about throwing the content at the user to interpret it:
 
-I feel my gut feelings have served me well through the other randomizers and getting the right combination for specific and general to make many possible combinations, but produce coherent ideas from them. So I spent hours working through those gut feelings.
+"Genre: paranormalpunk
+Location: shopping center
+Social Structure: a team
+Species: hairless dwarves."
 
-Currently I feel I am close with the description on the readme, but that I'm not quite there.
+Rather than "A paranormalpunk shopping center populated by a team of hairless dwarves."
+
+Hairless dwarves is such a perfect combination possibility. So is paranormalpunk, really.
+
+Also added a check for legless species, after not noticing that I was reading from the wrong variable for an hour, resulting in all True results from the function.
+
+
+V 0.1: initial commit. A mostly functional CLI set of randomizers, with a couple things on the to-do list still before I declare it 1.0 and begin work on the 2.0 GUI version.
+
