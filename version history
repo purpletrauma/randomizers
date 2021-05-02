@@ -32,3 +32,11 @@ Tweaked the random location generator to give more varried results, especially i
 Altered the randomizer that adds "punk" to the end of a random word to make a genre so that if 1 or fewer results were requested of it, it gives a single string result.
 
 Attempted to start the game generator in the hopes of ticking that off and declaring this V1.0 so that I could begin on GUI development, but I'm still undecided on how it should function enough to begin. I have some ideas and am getting there, though.
+
+v 0.4: got to cracking shortly after the last update, and added more lists, and begun the random game generator.
+
+More or less, I did some more idle work on the lists, and added 3 new lists in preparation for the game generator, as well as spent a lot of time considering how the game generator will work.
+
+I feel my gut feelings have served me well through the other randomizers and getting the right combination for specific and general to make many possible combinations, but produce coherent ideas from them. So I spent hours working through those gut feelings.
+
+Currently I feel I am close with the description on the readme, but that I'm not quite there.
