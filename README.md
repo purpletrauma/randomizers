@@ -22,4 +22,6 @@ Random game: a random game prompt. Currently haven't coded this one, but close t
 
 Current goals:
 1. The randomizers could always use more lists, or more items in the lists. Expanding upon the content and options is always a perpetual to-do item.
-2. If I expand into basic Python machine learning libraries, could I scour, say, imdb of its films using a script, create designated datasets for the film summary, quotes section, actors sections, ETC, and see what it comes up with when I run several AI processes designated to specific sections, creating a complete profile for a fictional film? An idea for later, possibly after I hit 2.0. Machine Learning is on the periphery of packages I wish to try, and that sounds like an amusing one.
+2. Complete the random game generator.
+3. Complete 1.0 goals (basically finish the last randomizer), begin working on PyQT5, GUI variations for the core code, with the goal being cross-system executeables and web integration for 2.0.
+4. If I expand into basic Python machine learning libraries, could I scour, say, imdb of its films using a script, create designated datasets for the film summary, quotes section, actors sections, ETC, and see what it comes up with when I run several AI processes designated to specific sections, creating a complete profile for a fictional film? An idea for later, possibly after I hit 2.0. Machine Learning is on the periphery of packages I wish to try, and that sounds like an amusing one.
