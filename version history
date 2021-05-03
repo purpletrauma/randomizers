@@ -2,6 +2,16 @@ This is here for my own reference and documentation.
 
 - Purpletrauma
 
+V 1.0: CLI edition complete. Ish.
+
+Honestly, it's hardly complete. Some lists could use populating still, and I'm not completely satisfied with the game randomizer, but I think I may have more options for building the randomizers if I had drop menus, tabs, checkboxes, and other GUI elements to work with.
+
+So for now, I did a few various tweaks and changes, put together a random game prompt generator. It is okay, but I feel the random mechanics could be better.
+
+Next time I update will be 1.1, and the start of adding GUI. May be a week before I push another update.. unless I really just want to work on those lists that need work.
+
+1.0 was nothing but a benchmark before I decided I had enough randomized content for now and started on the GUI anyway. I didn't want to bog down with error checking and revising for usability on a CLI, so I focused on making the randomizers run before I put my real effort into the GUI.
+
 
 v 0.4: got to cracking shortly after the last update, and added more lists, and begun the random game generator.
 

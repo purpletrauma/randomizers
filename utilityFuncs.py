@@ -24,19 +24,22 @@ def leglessCheck(species):
             hasLegs = False
     return hasLegs
 
-#This needed to be its own function: generating the gender randomization code. It needs to take one randomized variable, 3 user-chosen variables, and create a combination of 12 possible results based on those choices, one of which just alters the complexity of one of the others...
+#This needed to be its own function: generating the gender randomization code. 
+#It needs to take one randomized variable, 3 user-chosen variables, and create a combination 
+#of 12 possible results based on those choices, one of which just alters the complexity of one of the others...
 def outfitStyle(outfitDetail, theSpecies,  theGender, crossGenderPref,  isSilly):
     
-    #A reminder, crossGenderPref is 0 standard, 1 for crossgender, 2 for anything goes.
+    #A reminder, crossGenderPref is 0 standard, 1 for crossdresser, 2 for anything goes.
     theOutfit = "nude"
     
+    #If the gender preferences of outfit to gender are swapped, swap them locally for the code.
     if crossGenderPref == 1:
         if theGender == "male":
             theGender = "female"
         else:
             theGender = "male"
     
-    if outfitDetail == '1':
+    if outfitDetail == 1:
         localTop = randomLists.unisexTopList
         localBottom = randomLists.unisexBottomList
         localOuter = randomLists.unisexOuterList
@@ -93,7 +96,7 @@ def outfitStyle(outfitDetail, theSpecies,  theGender, crossGenderPref,  isSilly)
     if hasLegs == False:
         theBottom = ""
         
-    if outfitDetail == '1':
+    if outfitDetail == 1:
         theOutfit = theTop + theBottom + theOuter + theAccessory
     else: 
         theOutfit = choice(localOutfit)

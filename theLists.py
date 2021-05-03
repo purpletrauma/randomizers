@@ -71,7 +71,7 @@ class randomLists():
     sillyOuterList = ["air bag vest", "cooling vest", "christmas jumper", "sukajan", "apron", "goggle jacket", "life jacket", "straitjacket", "sleeved blanket"]
 
     #Bottom clothing.
-    unisexBottomList = ["list: jeans", "harem pants", "overalls", "shorts", "pants", "bell-bottoms", "bermuda shorts", "braccae", "capri pants", "cargo pants", "carpenter jeans", "chaps", "cycling shorts", "disco pants", "dolphin shorts", "fisherman pants", "hammer pants", "hip-huggers", "leather shorts", "parachute pants", "running shorts", "slim-fit pants", "sompot", "sweatpants", "sarong"]
+    unisexBottomList = ["jeans", "harem pants", "overalls", "shorts", "pants", "bell-bottoms", "bermuda shorts", "braccae", "capri pants", "cargo pants", "carpenter jeans", "chaps", "cycling shorts", "disco pants", "dolphin shorts", "fisherman pants", "hammer pants", "hip-huggers", "leather shorts", "parachute pants", "running shorts", "slim-fit pants", "sompot", "sweatpants", "sarong"]
     masculineBottomList = ["sansabelt", "knickerbockers", "plus fours", "breeches"]
     feminineBottomList = ["daisy dukes", "high-rise", "low-rise pants", "palazzo pants", "skort", "stirrup pants", "yoga pants", "a-line skirt", "bell skirt", "circle skirt", "full skirt", "culottes gored skirt", "pleated skirt", "pencil skirt", "wraparound skirt", "bubble skirt", "broomstick skirt", "crinoline skirt", "cargo skirt", "denim skirt", "godet skirt", "maxi skirt", "puffball skirt", "rah-rah skirt", "scooter skirt", "swing skirt", "t-skirt", "tiered skirt", "trouser skirt", "prairie skirt"]
     sillyBottomList = ["kilt", "bondage pants", "hot pants", "Nábrók", "phat pants", "see-through plastic pants", "galliffet trousers", "pajama pants"]
@@ -83,9 +83,13 @@ class randomLists():
     sillyBodyList = ["leotard", "cosplay", "costume", "dancewear", "chiton", "fetishistic", "sailor suit/dress", "body paint", "nude", "full body suit"]
 
     #The accessories.
-    unisexAccessoryList = ["hat", "bandana"]
-    masculineAccessoryList = ["tophat",  "something"]
-    feminineAccessoryList = ["purse",  "something"]
+    #Now planning a huge revision where I get more specific and..
+    #Lots of lists for this one option.. will wait for GUI coding.
+    #I feel having drop menus and checkboxes will expand how I can organize the content.
+    #General stuff now, detailed lists later.
+    unisexAccessoryList = ["hat", "belt",  "gloves",  "shoes"]
+    masculineAccessoryList = ["tophat",  "watch"]
+    feminineAccessoryList = ["purse",  "bracelet"]
     sillyAccessoryList = ["codpiece",  "pauldron"]
 
     #A list of one-word prompts pulled from here: https://artjournalist.com/one-word-art-journal-prompts/
@@ -99,5 +103,5 @@ class randomLists():
     specificMechanicsList = ["Food", "Invisibility", "shooting", "grenades", "time management", "Pushing", "Pulling", "Waiting", "Respawning", "Blocking", "Dodging", "Sneaking", "Buying", "Selling", "Fatigue", "Fighting", "Explosions", "Long Jumping", "Double Jumping", "Unlocking Locked Paths", "Hidden Passages", "Environmental Hazards", "Breakable Barriers", "Mines", "Indestructible Enemies", "Conveyors", "Moving Platforms", "Swimming", "Shields", "Refill Stations", "Trip Wires", "Nonaggressive Enemies", "Jump Pads,Regeneration", "Color Changing", "Traps", "Capturing", "Skill Tree", "Skill Points", "Feats", "Perks", "Balance", "Environmental Damage", "Connecting", "Mixing", "Hunger", "Magic", "Rotating", "Insanity", "Durability", "Item Upgrades", "Pickups", "Quicksaving/Quickloading", "Doorways", "Animals", "Walking", "Powerups", "Running"]
 
     #A list for game mechanics that imply little about what the mechanics do,
-    #or otherwise require a lot of more specific mechanics to function.
-    generalMechanicsList = ["Lives", "Inventory", "Movement", "Jumping", "Flying", "Swimming", "Dying", "Crafting", "Building", "Collecting", "Health", "NPCs", "Physics", "Walls", "Platforming", "Dialogue", "Experience", "Levels", "Gravity", "Items", "Cooking", "weapons", "Shopping", "Allies", "Enemies", "Buttons", "skills", "Powers", " Cold", "Heat", "Eating", "Walls", "melee", "Switches"]
+    #or otherwise require a lot of more interacting mechanics to function.
+    generalMechanicsList = ["Lives", "Inventory", "Movement", "Jumping", "Flying", "Swimming", "Dying", "Crafting", "Building", "Collecting", "Health", "NPCs", "Physics", "Walls", "Platforming", "Dialogue", "Experience", "Levels", "Gravity", "Items", "Cooking", "weapons", "Shopping", "Allies", "Enemies", "Buttons", "skills", "Powers",  "Cold", "Heat", "Eating", "Walls", "melee", "Switches"]

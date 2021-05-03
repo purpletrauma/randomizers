@@ -64,13 +64,34 @@ def randomLocation(runTimes, locationSize, isSilly):
             finalLocation = choice(theLocation)
             finalGenre = choice(theGenre)
             finalAdjective = choice(theAdjective) + " "
-        results.append("Genre: " + finalGenre + "\nLocation: " + finalLocation + "\nSocial Structure: " + choice(theSociety) + "\nSpecies: " + finalAdjective + choice(theSpecies) + " people.\n")
+        results.append("Genre: " + finalGenre + "\nLocation: " + finalLocation + "\nSocial Structure: " + choice(theSociety) + "\nSpecies: " + finalAdjective + choice(theSpecies) + " people\n")
         finalAdjective = ""
         finalLocation = ""
     return results
 
-def randomGame():
-    return 
+def randomGame(runTimes,  severity,  isSilly):
+    results = list()
+    del results[:]
+    localAdjectives = randomLists.adjectiveList
+    localPrompts = randomLists.promptsList
+    localGenre = randomLists.genreList
+    localMechanics = randomLists.generalMechanicsList
+    localPersonality = randomLists.personalityList
+    
+    if isSilly == True:
+        localAdjectives = localAdjectives + randomLists.sillyAdjectiveList
+        localMechanics = localMechanics + randomLists.specificMechanicsList
+    
+    for i in range(runTimes):
+        buildResults = "Game prompt: A " + choice(localAdjectives) + " feeling " + choice(localPrompts)
+        if severity > 0:
+            buildResults = buildResults + "\nSetting: A " + randomGenre(1) + " like " + choice(localGenre)
+        if severity > 1:
+            buildResults = buildResults + "\nMechanics: With " + choice(localPersonality) + " style " + choice(localMechanics) + "\n"
+        
+        results.append(buildResults)
+
+    return results
 
 def randomGenre(runTimes):
     results = list()
@@ -84,8 +105,8 @@ def randomGenre(runTimes):
     
     return results
 
-#Had the idea, due to how simple it is, to make random genres as well.
-def randomCharacter(runTimes, outfitDetail, crossGenderPref, isKinky,   isSilly):
+#Generating a random character.
+def randomCharacter(runTimes, outfitDetail, crossGenderPref, isKinky,  isSilly):
     results = list()
     localOutfit = randomLists.styleList
     if isSilly:
@@ -93,6 +114,7 @@ def randomCharacter(runTimes, outfitDetail, crossGenderPref, isKinky,   isSilly)
     del results[:]
 
 
+    #Build the results together now that all the options have been squared away.
     for i in range(runTimes):
         theGender = choice(randomLists.genderList)
         finalAge = choices(randomLists.ageList, k=1,  weights=(1, 4, 4, 3, 3, 2, 1)) 

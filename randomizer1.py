@@ -31,14 +31,21 @@ def runCharacter(runTimes):
     
     isSilly = sillyCheck()
     getKink = int(input("Do you want a kink? 0 no 1 yes.\n"))
-    outfitDetail = input("Do you want a detailed outfit? 0 no 1 yes\n")
-    crossGenderPref = int(input("Enter 0 for standard gendered outfits, 1 for crossgendered outfits, or 2 for anything goes.\n"))
+    outfitDetail = int(input("Do you want a detailed outfit? 0 no 1 yes\n"))
+    crossGenderPref = int(input("Enter 0 for standard gendered outfits, 1 for crossdressing outfits, or 2 for anything goes.\n"))
     if getKink == 1:
         isKinky = True
     else:
         isKinky = False
         
     getResults = randomCharacter(runTimes, outfitDetail, crossGenderPref, isKinky,   isSilly)    
+    return getResults
+
+def runGame(runTimes):
+    isSilly = sillyCheck()
+    getSeverity = int(input("Do you want light, medium, or heavy results? 0 to 2.\n"))
+    
+    getResults = randomGame(runTimes,  getSeverity,  isSilly)
     return getResults
 
 def sillyCheck():
@@ -51,7 +58,7 @@ def sillyCheck():
 
 while True:
     print('Pick your randomizer!\n')
-    whichOne = int(input("Enter 0 for 8ball, 1 for phrases, 2 for location, 3 for genre, 4 for characters.\n"))
+    whichOne = int(input("Enter 0 for 8ball, 1 for phrases, 2 for location, 3 for genre, 4 for characters, 5 for game prompt.\n"))
     runTimes = int(input("How many times do you want to run this?\n"))
     theResults = list()
 
@@ -65,6 +72,8 @@ while True:
         theResults = runGenre(runTimes)
     elif whichOne == 4:
        theResults = runCharacter(runTimes)
+    elif whichOne == 5:
+        theResults = runGame(runTimes)
     else:
         print('I dunno what to tell ya, man.')
         quit()
