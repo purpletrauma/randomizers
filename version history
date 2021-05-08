@@ -2,6 +2,21 @@ This is here for my own reference and documentation.
 
 - Purpletrauma
 
+V 1.1: Many revisions.
+
+1. Removed simple outfits. The more complex system wound up being the highlight of the character randomizer, so unless I find a reason why it should be included, it's cut. I'll keep the old lists, though. Maybe I'll find a use for them later, not that I ever properly filled those in.
+2. Added a "bypass checks" variable to just combine everything together and skipp all checks that are in place to ensure results are appropriate.
+3. Added the shoes in by default rather than save them for the accessories; just made sense.
+4. Added a user input to bypass species: the highlight really is the outfit generator, so if you don't want some silly species..
+5. Found out lists could += themselves; at some point I thought it would result in: [1, 2, 3, [4, 5, 6]] instead of the desired [1, 2, 3, 4, 5, 6] if I did that.. a quick test proved it was fine. The difference is negligible efficiency improvement and marginally more readable code, but that's good enough for me to change it.
+6. Added cold/warm overwear check to add appropriate items (currently just shoes, but will involve some accessory options later) to the proper lists.
+7. In the process of getting that running, it should now be easier to do all kinds of appropriateness checks for the clothing, though it will require the order of selected clothes to be carefully planned.
+8. Added a .geany project file. I wanted to use a python-specific IDE, but.. wound up either too complex an environment to work with (constant error messages WHILE I'm writing? Highlighting lines where the run program breaks, and the colors used make it unreadable!? Complete customization, but so feature rich I will need a one week lesson course that doesn't exist to be able to properly set it up in a way that using a simpler IDE would largely fix) or not as portable as needed (I code on Linux, Raspberry Pi (64bit), and own an Android tablet with a keyboard that may get involved in the future, so it needs to run on basically anything).
+9. The carefully planned order for 7 was bothering me, restructured it so that the code now chooses final options, then re-selects items based on checks. Order no longer matters, but adding lots of checks could make the results too chaotic. I doubt I will add that many, though. If I'm going to have 20 checks, I just need a more versatile system for compiling results than "Is X this? Then add that to the other list and choose a new result."
+10. Found a bug caused by not treating lists properly, leading to, apparently, the lists becoming ever longer each cycle with duplicate items. Wasn't noticeable until the code was getting more complex and results were beginning to show up in combinations that weren't supposed to be possible. It didn't break the code until today, it just made it more inefficient in an invisible. As a standard, the starting of all local lists now use .copy() instead of just = otherList.
+11. Odds and ends of minor changes. Particularly fond of mermaid (cephalopod) added to species.
+
+
 V 1.0: CLI edition complete. Ish.
 
 Honestly, it's hardly complete. Some lists could use populating still, and I'm not completely satisfied with the game randomizer, but I think I may have more options for building the randomizers if I had drop menus, tabs, checkboxes, and other GUI elements to work with.
