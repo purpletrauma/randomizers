@@ -124,11 +124,27 @@ def randomCharacter(runTimes, crossGenderPref, isKinky, bypassChecks, useSpecies
 			buildResults = "Species: " + theSpecies + "\n"
 		else:
 			theSpecies = ""
+			
+		buildLikes = sample(randomLists.likesList, 4)
+		theLikes = ""
+		theDislikes = ""
+
+		#Use enumeration to alternate likes and dislikes for the length of the list.
+		for n, i in enumerate(buildLikes):
+			if n % 2 == 0:
+				theLikes += i + ", "
+			else:
+				theDislikes += i + ", "
+		theLikes = theLikes[:len(theLikes)-2]
+		theDislikes = theDislikes[:len(theDislikes)-2]
+		
 		buildResults += "Age: " + choice(finalAge)  + "\n"
 		buildResults += "Gender: " + theGender + "\n"
 		buildResults += "Outfit Style: " + choice(localOutfit) + "\n"
 		buildResults += "Outfit: " + outfitStyle(theSpecies, bypassChecks, theGender, crossGenderPref, isSilly) + "\n"
 		buildResults += "Personality: " + choice(randomLists.personalityList)+ "\n"
+		buildResults += "Likes: " + theLikes + "\n"
+		buildResults += "Dislikes: " + theDislikes + "\n"
 		buildResults += "Primary and Secondary color: " + listToString(sample(randomLists.colorList,  2)) + "\n"
 		buildResults += "Character quirk: "+ choice(randomLists.quirkList) + "\n"
 		if isKinky == True:

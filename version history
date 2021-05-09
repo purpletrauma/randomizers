@@ -2,6 +2,16 @@ This is here for my own reference and documentation.
 
 - Purpletrauma
 
+V 1.2: getting more off my to-do list because I want to get back to working on GUI.
+
+1. Added the accessories lists as they currently are to theLists.py. It's alright, but there could be more. Never did research make-up for that to be randomly generated as well..
+2. Re-coded the outfit checks for efficiency.. not needed for a program of this level, but I like coming up with superior code. Since the next item was to add a new function, it's gratifying to replace 3 functions with potentially more to come with 1.
+3. Added winter/summer hats.
+4. Turned bonnets from feminine headwear, to silly feminine headwear.
+5. Added likes/dislikes.
+
+With these items, I ticked off the entirety of my to-do list. Besides the ongoing need to fill in the empty/small lists with more items. For now, I'm back to working on the GUI next. I feel like any further complexity to the character generator (besides tweaking the outfit part to be more refined) would just make it overly busy.
+
 V 1.1: Many revisions.
 
 1. Removed simple outfits. The more complex system wound up being the highlight of the character randomizer, so unless I find a reason why it should be included, it's cut. I'll keep the old lists, though. Maybe I'll find a use for them later, not that I ever properly filled those in.

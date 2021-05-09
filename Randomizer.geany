@@ -20,18 +20,19 @@ indent_mode=2
 [project]
 name=Randomizer
 base_path=/home/purpletrauma/randomizers
+description=
 
 [long line marker]
 long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=4
-FILE_NAME_0=400;Python;0;EUTF-8;1;1;0;%2Fhome%2Fpurpletrauma%2Frandomizers%2Frandomizer1.py;0;4
-FILE_NAME_1=1405;Python;0;EUTF-8;1;1;1;%2Fhome%2Fpurpletrauma%2Frandomizers%2Fcore.py;0;4
-FILE_NAME_2=1654;Python;0;EUTF-8;1;1;1;%2Fhome%2Fpurpletrauma%2Frandomizers%2FutilityFuncs.py;0;4
-FILE_NAME_3=45328;Python;0;EUTF-8;1;1;1;%2Fhome%2Fpurpletrauma%2Frandomizers%2FtheLists.py;0;4
-FILE_NAME_4=3085;None;0;EUTF-8;1;1;1;%2Fhome%2Fpurpletrauma%2Frandomizers%2Fversion%20history;0;4
+current_page=0
+FILE_NAME_0=566;Python;0;EUTF-8;1;1;0;%2Fhome%2Fpurpletrauma%2Frandomizers%2Frandomizer1.py;0;4
+FILE_NAME_1=4966;Python;0;EUTF-8;1;1;1;%2Fhome%2Fpurpletrauma%2Frandomizers%2Fcore.py;0;4
+FILE_NAME_2=6273;Python;0;EUTF-8;1;1;1;%2Fhome%2Fpurpletrauma%2Frandomizers%2FutilityFuncs.py;0;4
+FILE_NAME_3=50972;Python;0;EUTF-8;1;1;1;%2Fhome%2Fpurpletrauma%2Frandomizers%2FtheLists.py;0;4
+FILE_NAME_4=218;None;0;EUTF-8;1;1;1;%2Fhome%2Fpurpletrauma%2Frandomizers%2Fversion%20history;0;4
 FILE_NAME_5=0;None;0;EUTF-8;1;1;0;%2Fhome%2Fpurpletrauma%2Frandomizers%2Finput;0;4
 FILE_NAME_6=0;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fpurpletrauma%2Frandomizers%2FREADME.md;0;4
 
