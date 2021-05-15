@@ -2,6 +2,21 @@ This is here for my own reference and documentation.
 
 - Purpletrauma
 
+V 1.3:
+
+1. Forgot to do last time while recoding how clothing checks was done: I added ties that only appear as options when a collared shirt is on the character.
+2. Added triple-quote docstrings at the start of each file to define what the file is used for.
+3. Due to defining what goes where, the outfit randomizer was moved to core.py as it fit more in that category than utilityFuncs.py. Silly check was also moved to utilityFuncs.
+4. Added a very simple isItTrue definition to utilityFuncs to turn the various 1/0 inputs into true/false. All non-1 responses now default to false, bypassing most errors possible. Silly check now runs this rather than its own true/false return. Thought of replacing it outright, but still need the question to be used in multiple places, so it stays. I doubt it's used everywhere it could be; I admit I'm not trying that hard to recode everything as my mind is elsewhere.
+5. While testing the isItTrue addition, found that I had left in an errant + in the location generator and fixed it.
+6. None of it is addeded as every use of a list from theLists would need to be changed, but I'm experimenting with how classes work; testing some ideas to see if I can completely recode the lists to be more efficient and easier to call, and the best ways to accomplish what I want from it. Currently planning a class under utilityFuncs that is inhereted to create objects that have return functions for the various combinations needed. Currently struggling with the idea that it would be a clothes class, then either inherited clothes classes that add extra lists for stuff that needs it, or use-specific classes that add exactly what they need.. I don't like either path of having a super specific variations, or super general versions that have more than they need most of the time.. wondering if I could reclassify what I think of as an object to make the right ratio of specific to general.. not to mention there are non-clothes.. there's probably a better approach here, and while I am excited to have figured out how to call all variables from a class as a single list with one line of code, I should probably figure out how to best classify the classes for the most general use in my various lists. I think it would be ideal to avoid any class that is used only once, like how only hats has a "feminineSilly" sub-category, so I should think of how to deal with that. Would also be a good way to add the test lists for legless species, winter coats, ETC...
+
+I put so much time into testing and experimenting with the last item, that I feel done for now. I'll just see about adding any words I may have written down in my notes somewhere, and push this change. I am considering new practice projects to work out before I come back, so there will probably be a break in additions here.
+
+Current ideas: considering changing the next 2.0 goals. Thinking about dropping Qt to use a game engine instead for cross-platform GUI and because the ultimate goal of all this practice is to produce my own games, using Django for a web version, and maybe abandoning having one unified randomizer and instead create branches where each randomizer is a single simpler program.. or keep the main general, but re-structure it so that it has a different branches for each specific randomizer. Just take the shared "get results" code, and have separate UI scripts for each one.
+
+I'm not sure just yet which direction I'll take it. For now I'm gonna step away to code simple programs in Django for practice. I'll come back when I've learned a few more tricks and possible re-code the randomizer once more in prep for whatever GUI I implement, whether PyQt, Django, Godot, or whatever.
+
 V 1.2: getting more off my to-do list because I want to get back to working on GUI.
 
 1. Added the accessories lists as they currently are to theLists.py. It's alright, but there could be more. Never did research make-up for that to be randomly generated as well..

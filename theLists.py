@@ -1,3 +1,7 @@
+"""
+A container for all the lists.
+"""
+
 #After the core file started getting long for stupid reasons, decided the lists should just get their own file.
 class randomLists():
 	#All the results in the original Magic 8-Ball.
@@ -9,9 +13,11 @@ class randomLists():
 	#Special list for adjectives that I feel would have sillier results.
 	sillyAdjectiveList = ["robot", "stupid", "undead", "pirate", "ninja", "cyborg", "sadistic", "hairless", "dead", "flirty", "tasty", "nasty",  "super", "dizzy", "shiny", "impossible", "worrisome", "moist", "zany", "nutty", "long", "short", "outrageous", "lucky", "mushy", "seductive"]
 
+	#Had an idea to take some of those sillyAdjective items, and make a list of only ones that imply some sort of change to them as a species or what their body is. currently used to add singular species to be called with the species list.
+	speciesAdjectiveList = ["robot", "lich", "zombie", "skeleton", "ghost", "undead", "cyborg", "vampire"]
 	
 	#A list of species types to be used when defining a beings species.
-	speciesList=["lamia",  "arachne",  "scylia",  "draconic",  "demonic",  "doll",  "mannequin",  "lizard",  "mimic",  "giant",  "dryad",  "dullahan",  "slime",  "slug",  "harpy",  "fairy",  "insect",  "mermaid",  "goblin",  "elf",  "dwarf",  "gnome", "alraune", "werewolf", "ogre", "troll", "kobold", "mermaid (cephalopod)"]
+	speciesList=["lamia",  "arachne",  "scylia",  "draconic",  "demonic", "angelic",  "doll",  "mannequin",  "lizard",  "mimic",  "giant",  "dryad",  "dullahan",  "slime",  "slug",  "harpy",  "fairy",  "insectoid",  "mermaid",  "goblin",  "elf",  "dwarf",  "gnome", "alraune", "werewolf", "ogre", "troll", "kobold", "mermaid (cephalopod)", "satyr", "girtablilu"]
 
 	#Word combination for the random genre. First is a regular random word, second is a regular genre to combine it with. While a couple normal ones is possible, is meant to be sillier.
 	punkGenre = ["cyber", "bio",  "clock",  "stone",  "tesla",  "myth",  "robo", "cheese", "steam", "meat", "banana", "diesel", "sex", "holiday", "lovecraft", "paranormal",  "spider",  "atom",  "deco",  "splatter",  "ocean",  "lobster", "crab",   "gothic"]

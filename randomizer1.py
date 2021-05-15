@@ -1,4 +1,14 @@
+"""
+This file is the UI, and is the file to run.
+
+It is also to keep the input separate from the randomizers themselves.
+
+Get all input here, then plug them into the randomizers and return a string or list.
+"""
+
 from core import *
+
+from utilityFuncs import isItTrue, sillyCheck
 
 
 def run8Ball(runTimes):
@@ -30,17 +40,16 @@ def runGenre(runTimes):
 def runCharacter(runTimes):
 	
 	#Check if user wants a kink.
-	getKink = int(input("Do you want a kink? 0 no 1 yes\n"))
+	getKink = input("Do you want a kink? 0 no 1 yes\n")
 	
-	if getKink == 1:
-		isKinky = True
-	else:
-		isKinky = False
+	isKinky = isItTrue(getKink)
 		
 	#Check if other checks can be skipped.
-	bypassChecks = int(input("Anything goes outfit? (Will bypass all checks for appropriateness) 0 no 1 yes\n"))
+	skipChecks = input("Anything goes outfit? (Will bypass all checks for appropriateness) 0 no 1 yes\n")
 	
-	if bypassChecks == 1:
+	bypassChecks = isItTrue(skipChecks)
+	
+	if bypassChecks:
 		crossGenderPref = 0
 		isSilly = True
 	else:
@@ -60,13 +69,7 @@ def runGame(runTimes):
 	getResults = randomGame(runTimes,  getSeverity,  isSilly)
 	return getResults
 
-def sillyCheck():
-	getSilly = int(input("Run in silly mode? 0 no 1 yes.\n"))
-	if getSilly == 1:
-		isSilly = True
-	else:
-		isSilly = False
-	return isSilly
+
 
 while True:
 	
@@ -93,7 +96,7 @@ while True:
 
 	for i in theResults:
 		print(i)
-	goAgain = input('\nDo you want to go again? y/n\n')
-	if goAgain != 'y':
+	goAgain = isItTrue(input('\nDo you want to go again? 1/0\n'))
+	if not goAgain:
 		quit()
 

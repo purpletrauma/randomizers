@@ -19,9 +19,17 @@ Random character: generates a random character with a species, age, gender, outf
 
 Random game: a random game prompt. Select between light/medium/heavy modes. Light = basic prompt to run with like what you would get from most game jams. Medium = Light + random setting genre for aesthetic style. Heavy = Medium + randomized idea for a unique gameplay style. Really, it's just a game mechanic and a word to describe it and leave you to interpret it, but it's the best I could come up with when just sitting down to get it done.
 
+Stepping away from the project for maybe a month to do something else.
+
 Current goals:
 1. The randomizers could always use more lists, or more items in the lists. Expanding upon the content and options is always a perpetual to-do item.
-2. The lists of accessories and the simple outfits in particular could use lots of work.
+2. The lists of accessories in particular could use lots of work.
 3. Work on adapting the code for GUI.
 4. If I expand into basic Python machine learning libraries, could I scour, say, imdb of its films using a script, create designated datasets for the film summary, quotes section, actors sections, ETC, and see what it comes up with when I run several AI processes designated to specific sections, creating a complete profile for a fictional film? An idea for later, possibly after I hit 2.0. Machine Learning is on the periphery of packages I wish to try, and that sounds like an amusing one.
 5. Add a random name generator that uses a combination of vowels and consonants to generator a name, particularly for the characters. On the more advanced end, have multiple varieties for different feels for how the name works. I suspect this will be good Regex practice.
+6. Consider adding super-specific species variations, like a "were-something" set of animal people, add more specific types for general stuff like "angelic/demonic/insectoid" to say things like "ant insectoid" or "imp demon" or "cupid angel" ETC. Just a consideration for how to greatly increase the scope of the random species. Maybe save it for after I implement classes for organizing lists, so I can make a single object that I can call general/specific species from separately.
+7. Implement more complicated classes for theLists.py to make it more efficient and easier to use than a single giant class filled with variables.
+8. Learned about comma separators, so I should go back sometime and find all instances of + " " + and replace them with commas to do the same thing. Just a bit of busywork I'm not gonna do right now.
+9. Implement the new list I threw in that has stuff like "zombie/ghost/skeleton" that would work on its own as a species, but could be combined with others to make zombie arachne for a sillier result.
+10. After GUI is implemented, add a random facts bar that will show a new message every couple of minutes to say stuff like "there are len()+1 number of y" and other random trivia about the program and the stuff in it.
+11. I noticed "mittens" were under the silly list for hand accessories, likely because I hadn't been singling out weather-appropriate clothing at the time of making that list, so perhaps go back and scour all the silly lists for more winter/summer exclusive clothing.
