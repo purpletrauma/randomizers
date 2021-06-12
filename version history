@@ -2,6 +2,17 @@ This is here for my own reference and documentation.
 
 - Purpletrauma
 
+V 1.4:
+
+1. After coding a simple script that turns copied words into lists I can copy-paste into the randomizer with ease, I expanded the lists a bit.
+2. I implemented some code I worked on on the side to turn the lists into classes for collecting and returning copies of the lists as needed. Doesn't do much for the results at this stage, but should greatly improve efficiency and useability down the line. Gotta admit, I was skeptical about how much it would do for me now before the lists got too cumbersome to work with, but the code is much prettier now that I created classes for managing lists.
+3. Added "#!/usr/bin/env python3" to everything since that should be habit.
+4. Removed "alraune" from species. Upon research, it was a name based on a German novel, and "dryad" covers the same thing just fine.
+5. Got a bit frustrated looking up biological taxonomy in an attempt to make it so that, say, you get "mermaid(aquaticSpecies)" which sticks in actual scientific terms for the species, thus directing how they further look... nested randomization wound up being the easy part; finding the words to use in it was frustrating. Ultimately scrapped the concept. I love the idea, but I felt it would feel unbalanced to have: robot, demonoid, 100+ variants of arachne, cyborg, 1,000+ variants of mermaid. May make it its own randomizer for those that want to single out types for their species.
+6. Wanting to refine a bit more, I did the rework on species I wanted: species are now separated into two lists. Those that could easily be combined to describe an individual (robot, android, giant, dwarf, ghost) and those that better describe an entire people (arachne, lamia, mermaid), so that in silly mode, you get the first plus second, giving you a dwarf arachne, cyborg dryad, or giant lamia.
+7. I think I've dragged my heels enough. Next version of the randomizer will be V2.0, implementing Qt in some way. Unsure if I'll make the uphill struggle of coding directly in PyQt, or use a mediary library that tries to simplify the process.
+8. Realized I started V1.4 inside of an incomplete version of V1.3. Did my best to make everything match up, but paranoid that not all the listed changes and updates are in there anymore, even if I did check each one.
+
 V 1.3:
 
 1. Forgot to do last time while recoding how clothing checks was done: I added ties that only appear as options when a collared shirt is on the character.
@@ -9,7 +20,7 @@ V 1.3:
 3. Due to defining what goes where, the outfit randomizer was moved to core.py as it fit more in that category than utilityFuncs.py. Silly check was also moved to utilityFuncs.
 4. Added a very simple isItTrue definition to utilityFuncs to turn the various 1/0 inputs into true/false. All non-1 responses now default to false, bypassing most errors possible. Silly check now runs this rather than its own true/false return. Thought of replacing it outright, but still need the question to be used in multiple places, so it stays. I doubt it's used everywhere it could be; I admit I'm not trying that hard to recode everything as my mind is elsewhere.
 5. While testing the isItTrue addition, found that I had left in an errant + in the location generator and fixed it.
-6. None of it is addeded as every use of a list from theLists would need to be changed, but I'm experimenting with how classes work; testing some ideas to see if I can completely recode the lists to be more efficient and easier to call, and the best ways to accomplish what I want from it. Currently planning a class under utilityFuncs that is inhereted to create objects that have return functions for the various combinations needed. Currently struggling with the idea that it would be a clothes class, then either inherited clothes classes that add extra lists for stuff that needs it, or use-specific classes that add exactly what they need.. I don't like either path of having a super specific variations, or super general versions that have more than they need most of the time.. wondering if I could reclassify what I think of as an object to make the right ratio of specific to general.. not to mention there are non-clothes.. there's probably a better approach here, and while I am excited to have figured out how to call all variables from a class as a single list with one line of code, I should probably figure out how to best classify the classes for the most general use in my various lists. I think it would be ideal to avoid any class that is used only once, like how only hats has a "feminineSilly" sub-category, so I should think of how to deal with that. Would also be a good way to add the test lists for legless species, winter coats, ETC...
+6. Removed rambling here in V1.4: was conceptualizing changes for next version as item 6.
 
 I put so much time into testing and experimenting with the last item, that I feel done for now. I'll just see about adding any words I may have written down in my notes somewhere, and push this change. I am considering new practice projects to work out before I come back, so there will probably be a break in additions here.
 

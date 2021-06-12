@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 A file for smaller misc definitions that have more general use throughout the different scripts.
 

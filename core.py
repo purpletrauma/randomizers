@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 This file is for the designated randomizers.
 
@@ -13,7 +15,7 @@ def randomBall(runTimes):
 	#I am astounded at how much easier this is this time.
 	results = list()
 	for i in range(runTimes):
-		results.append(choice(randomLists.magicBallList))
+		results.append(choice(magicBall.getList()))
 	return results
 
 def randomPhrase(runTimes):
@@ -32,11 +34,11 @@ def randomPhrase(runTimes):
 #Revising my old code. Basically the same, just with better lists and data structure.
 def randomLocation(runTimes, locationSize, isSilly):
 	#First, since they can be altered, make the local variables equal the global ones.
-	theLocation = randomLists.smallLocation.copy()
-	theSociety = randomLists.smallSocialStructure.copy()
-	theGenre = randomLists.genreList.copy()
-	theAdjective = randomLists.adjectiveList.copy()
-	theSpecies = randomLists.speciesList.copy()
+	theLocation = locationLists.small()
+	theSociety = socialLists.small()
+	theGenre = genres.getList()
+	theAdjective = adjectives.getList()
+	theSpecies = species.getList()
 	
 	#As a standard, populate an empty list for variables that may need it.
 	results = list()
@@ -45,15 +47,15 @@ def randomLocation(runTimes, locationSize, isSilly):
 
 	#Next, alter it as needed for the chosen size
 	if locationSize == 1:
-		theLocation +=randomLists.mediumLocation
-		theSociety += randomLists.bigSocialStructure
+		theLocation +=locationLists.medium()
+		theSociety += socialLists.large()
 	elif locationSize == 2:
-		theLocation = randomLists.bigLocation
-		theSociety = randomLists.bigSocialStructure
+		theLocation = locationLists.large()
+		theSociety = socialLists.large()
 		
 	#Silly mode alterations.
 	if isSilly == True:
-		theAdjective = theAdjective + randomLists.sillyAdjectiveList
+		theAdjective += adjectives.getSilly()
 
 	#Craft and return the results in a string.
 	for i in range(runTimes):
@@ -78,20 +80,20 @@ def randomLocation(runTimes, locationSize, isSilly):
 def randomGame(runTimes,  severity,  isSilly):
 	results = list()
 	del results[:]
-	localAdjectives = randomLists.adjectiveList.copy()
-	localPrompts = randomLists.promptsList.copy()
-	localGenre = randomLists.genreList.copy()
-	localMechanics = randomLists.generalMechanicsList.copy()
-	localPersonality = randomLists.personalityList.copy()
+	localAdjectives = adjectives.getList()
+	localPrompts = prompts.getList()
+	localGenre = genres.getList()
+	localMechanics = mechGen.getList()
+	localPersonality = personalities.getList()
 	
 	if isSilly == True:
-		localAdjectives += randomLists.sillyAdjectiveList
-		localMechanics += randomLists.specificMechanicsList
+		localAdjectives += adjectives.getSilly()
+		localMechanics += mechSpef.getList()
 	
 	for i in range(runTimes):
 		buildResults = "Game prompt: A " + choice(localAdjectives) + " feeling " + choice(localPrompts)
 		if severity > 0:
-			buildResults += "\nSetting: A " + randomGenre(1) + " like " + choice(localGenre)
+			buildResults += "\nSetting: A " + randomGenre(1) + " like" + choice(localGenre)
 		if severity > 1:
 			buildResults += "\nMechanics: With " + choice(localPersonality) + " style " + choice(localMechanics) + "\n"
 		
@@ -105,35 +107,36 @@ def randomGenre(runTimes):
 	
 	if runTimes > 1:   
 		for i in range(runTimes):
-			results.append(choice(randomLists.punkGenre) + "punk")
+			results.append(choice(punks.getList()) + "punk")
 	else:
-		results = choice(randomLists.punkGenre) + "punk"
+		results = choice(punks.getList()) + "punk"
 	
 	return results
 
 #Generating a random character.
 def randomCharacter(runTimes, crossGenderPref, isKinky, bypassChecks, useSpecies, isSilly):
-	results = list()
-	localOutfit = randomLists.styleList.copy()
+	results = []
+	localOutfit = styleLists.getList()
 	if isSilly:
-		localOutfit += randomLists.sillyStyleList.copy()
+		localOutfit += styleLists.getSilly()
 	del results[:]
 
 
 	#Build the results together now that all the options have been squared away.
 	for i in range(runTimes):
-		theGender = choice(randomLists.genderList)
-		finalAge = choices(randomLists.ageList, k=1,  weights=(1, 4, 4, 3, 3, 2, 1)) 
+		theGender = choice(genderList)
+		finalAge = choices(ages.getList(), k=1,  weights=(1, 4, 4, 3, 3, 2, 1)) 
 		buildResults = ""
-		#I just shoved this in real quick to use the new list.
-		tempSpecies = randomLists.speciesList + randomLists.speciesAdjectiveList
-		if useSpecies == 1:
-			theSpecies = choice(tempSpecies)
+		if useSpecies == 1 and isSilly:
+			theSpecies = choice(species.getSilly()) + " " + choice(species.getList())
+			buildResults = "Species: " + theSpecies + "\n"	
+		elif useSpecies == 1:
+			theSpecies = choice(species.everything())
 			buildResults = "Species: " + theSpecies + "\n"
 		else:
 			theSpecies = ""
 			
-		buildLikes = sample(randomLists.likesList, 4)
+		buildLikes = sample(likes.getList(), 4)
 		theLikes = ""
 		theDislikes = ""
 
@@ -149,14 +152,14 @@ def randomCharacter(runTimes, crossGenderPref, isKinky, bypassChecks, useSpecies
 		buildResults += "Age: " + choice(finalAge)  + "\n"
 		buildResults += "Gender: " + theGender + "\n"
 		buildResults += "Outfit Style: " + choice(localOutfit) + "\n"
-		buildResults += "Outfit: " + buildOutfit(theSpecies, bypassChecks, theGender, crossGenderPref, isSilly) + "\n"
-		buildResults += "Personality: " + choice(randomLists.personalityList)+ "\n"
+		buildResults += "Outfit: " + outfitStyle(theSpecies, bypassChecks, theGender, crossGenderPref, isSilly) + "\n"
+		buildResults += "Personality: " + choice(personalities.getList())+ "\n"
 		buildResults += "Likes: " + theLikes + "\n"
 		buildResults += "Dislikes: " + theDislikes + "\n"
-		buildResults += "Primary and Secondary color: " + listToString(sample(randomLists.colorList,  2)) + "\n"
-		buildResults += "Character quirk: "+ choice(randomLists.quirkList) + "\n"
+		buildResults += "Primary and Secondary color: " + listToString(sample(colors.getList(),  2)) + "\n"
+		buildResults += "Character quirk: "+ choice(quirks.getList()) + "\n"
 		if isKinky == True:
-			buildResults +="Kink: " + choice(randomLists.kinkList) + "\n"
+			buildResults +="Kink: " + choice(kinks.getList()) + "\n"
 		results.append(buildResults)
 	return results
 
@@ -167,67 +170,51 @@ def randomCharacter(runTimes, crossGenderPref, isKinky, bypassChecks, useSpecies
 
 
 
-#This needed to be its own function: generating the gender randomization code. 
-#It needs to take one randomized variable, 3 user-chosen variables, and create a combination 
-#of 12 possible results based on those choices, one of which just alters the complexity of one of the others...
-def buildOutfit(theSpecies, bypassChecks, theGender, crossGenderPref, isSilly):
+def outfitStyle(theSpecies, bypassChecks, theGender, crossGenderPref, isSilly):
 	
 	#A reminder, crossGenderPref is 0 standard, 1 for crossdresser, 2 for anything goes.	
 	
 	
-	#Default unisex items added to lists.
-	#Also, since I need the external lists to remain unchanging, .copy() them instead of =.
-	localTop = randomLists.unisexTopList.copy()
-	localBottom = randomLists.unisexBottomList.copy()
-	localOuter = randomLists.unisexOuterList.copy()
-	localShoes = randomLists.unisexShoesList.copy()
-	localHeld = randomLists.unisexHeldAccessories.copy()
-	localHead = randomLists.unisexHeadAccessories.copy()
-	localWaist = randomLists.unisexWaistAccessories.copy()
-	localFace = randomLists.unisexFaceAccessories.copy()
-	localNeck = randomLists.unisexNeckAccessories.copy()
-	localHand = randomLists.unisexHandAccessories.copy()
-	
-	
-	#Get the silly check out of the way.
-	if isSilly:
-		localTop += randomLists.sillyTopList
-		localBottom += randomLists.sillyBottomList
-		localOuter += randomLists.sillyOuterList
-		localShoes += randomLists.sillyShoesList
-		localHeld += randomLists.sillyHeldAccessories
-		localHead += randomLists.sillyHeadAccessories
-		localWaist += randomLists.sillyWaistAccessories
-		localFace += randomLists.sillyFaceAccessories
-		localNeck += randomLists.sillyNeckAccessories
-		localHand += randomLists.sillyHandAccessories	
+
 	
 	#If you bypass checks, just add everything.
-	if bypassChecks:
-		localTop += randomLists.masculineTopList + randomLists.feminineTopList
-		localBottom += randomLists.masculineBottomList + randomLists.feminineBottomList
-		localOuter += randomLists.masculineOuterList + randomLists.feminineOuterList
-		localShoes += randomLists.feminineShoesList + randomLists.masculineShoesList + randomLists.winterShoesList + randomLists.summerShoesList
-		localHeld += randomLists.feminineHeldAccessories + randomLists.masculineHeldAccessories
-		localHead += randomLists.feminineHeadAccessories + randomLists.masculineHeadAccessories
-		localWaist += randomLists.feminineWaistAccessories + randomLists.masculineWaistAccessories
-		localFace += randomLists.feminineFaceAccessories + randomLists.masculineFaceAccessories
-		localNeck += randomLists.feminineNeckAccessories + randomLists.masculineNeckAccessories
-		localHand += randomLists.feminineHandAccessories + randomLists.masculineHandAccessories
-		
-		#Choose options.
-		finalTop = choice(localTop)
-		finalBottom = choice(localBottom)
-		finalOuter = choice(localOuter)
-		finalShoes = choice(localShoes)
-		finalHeld = choice(localHeld)
-		finalHead = choice(localHead)
-		finalWaist = choice(localWaist)
-		finalFace = choice(localFace)
-		finalNeck = choice(localNeck)
-		finalHand = choice(localHand)
-	#All other checks in the "else" category.
+	if bypassChecks == 1:
+		localTop = topLists.everything()
+		localBottom = bottomLists.everything()
+		localOuter = outerLists.everything()
+		localShoes = shoeLists.everything()
+		localHeld = heldLists.everything()
+		localHead = headLists.everything()
+		localWaist = waistLists.everything()
+		localFace = faceLists.everything()
+		localNeck = neckLists.everything()
+		localHand = handLists.everything()
 	else:
+		#Default unisex items added to lists.
+		localTop = []
+		localBottom = []
+		localOuter = []
+		localShoes = []
+		localHeld = []
+		localHead = []
+		localWaist = []
+		localFace = []
+		localNeck = []
+		localHand = []
+		
+		
+		#Get the silly check out of the way.
+		if isSilly:
+			localTop += topLists.silly()
+			localBottom += bottomLists.silly()
+			localOuter += outerLists.silly()
+			localShoes += shoeLists.silly()
+			localHeld += heldLists.silly()
+			localHead += headLists.silly()
+			localWaist += waistLists.silly()
+			localFace += faceLists.silly()
+			localNeck += neckLists.silly()
+			localHand += handLists.silly()
 		#If crossgender, swap gender from selected one.
 		if crossGenderPref == 1:
 			if theGender == "male":
@@ -237,81 +224,84 @@ def buildOutfit(theSpecies, bypassChecks, theGender, crossGenderPref, isSilly):
 		
 		#Add everything if anything goes gender-wise.
 		if crossGenderPref == 2:
-			localTop += randomLists.feminineTopList + randomLists.feminineTopList
-			localBottom += randomLists.feminineBottomList + randomLists.masculineBottomList
-			localOuter += randomLists.feminineOuterList + randomLists.masculineOuterList
-			localShoes += randomLists.feminineShoesList
-			localHeld += randomLists.feminineHeldAccessories + randomLists.masculineHeldAccessories
-			localHead += randomLists.feminineHeadAccessories + randomLists.masculineHeadAccessories
-			localWaist += randomLists.feminineWaistAccessories + randomLists.masculineWaistAccessories
-			localFace += randomLists.feminineFaceAccessories + randomLists.masculineFaceAccessories
-			localNeck += randomLists.feminineNeckAccessories + randomLists.masculineNeckAccessories
-			localHand += randomLists.feminineHandAccessories + randomLists.masculineHandAccessories
+			localTop += topLists.cross()
+			localBottom += bottomLists.cross()
+			localOuter += outerLists.cross()
+			localShoes += shoeLists.cross()
+			localHeld += heldLists.cross()
+			localHead += headLists.cross()
+			localWaist += waistLists.cross()
+			localFace += faceLists.cross()
+			localNeck += neckLists.cross()
+			localHand += handLists.cross()
 		# Add masculine items if male.
 		elif theGender == "male":
-			localTop += randomLists.masculineTopList
-			localBottom += randomLists.masculineBottomList
-			localOuter += randomLists.masculineOuterList
-			localShoes += randomLists.masculineShoesList
-			localHeld += randomLists.masculineHeldAccessories
-			localHead += randomLists.masculineHeadAccessories
-			localWaist += randomLists.masculineWaistAccessories
-			localFace += randomLists.masculineFaceAccessories
-			localNeck += randomLists.masculineNeckAccessories
-			localHand += randomLists.masculineHandAccessories
-		#Add feminine items if female.
+			localTop += topLists.masculine()
+			localBottom += bottomLists.masculine()
+			localOuter += outerLists.masculine()
+			localShoes += shoeLists.masculine()
+			localHeld += heldLists.masculine()
+			localHead += headLists.masculine()
+			localWaist += waistLists.masculine()
+			localFace += faceLists.masculine()
+			localNeck += neckLists.masculine()
+			localHand += handLists.masculine()
+		#After those checks, can assume feminine outfit.
 		else: 
-			localTop += randomLists.feminineTopList
-			localBottom += randomLists.feminineBottomList
-			localOuter += randomLists.feminineOuterList
-			localShoes += randomLists.feminineShoesList
-			localHeld += randomLists.feminineHeldAccessories
-			localHead += randomLists.feminineHeadAccessories
-			localWaist += randomLists.feminineWaistAccessories
-			localFace += randomLists.feminineFaceAccessories
-			localNeck += randomLists.feminineNeckAccessories
-			localHand += randomLists.feminineHandAccessories
+			localTop += topLists.feminine()
+			localBottom += bottomLists.feminine()
+			localOuter += outerLists.feminine()
+			localShoes += shoeLists.feminine()
+			localHeld += heldLists.feminine()
+			localHead += headLists.feminine()
+			localWaist += waistLists.feminine()
+			localFace += faceLists.feminine()
+			localNeck += neckLists.feminine()
+			localHand += handLists.feminine()
 			#Bonnets!
 			if isSilly:
-				localHead += randomLists.feminineSillyHeadList
-			
-		#Populate the lists.
-		finalTop = choice(localTop)
-		finalBottom = choice(localBottom)
-		finalOuter = choice(localOuter)
-		finalShoes = choice(localShoes)
-		#Accessories are a little different.
-		finalHeld = choice(localHeld)
-		finalHead = choice(localHead)
-		finalWaist = choice(localWaist)
-		finalFace = choice(localFace)
+				localHead += femSilHead.getList()
+		
+	#Populate the lists.
+	finalTop = choice(localTop)
+	finalBottom = choice(localBottom)
+	finalOuter = choice(localOuter)
+	finalShoes = choice(localShoes)
+	#Accessories are a little different.
+	finalHeld = choice(localHeld)
+	finalHead = choice(localHead)
+	finalWaist = choice(localWaist)
+	finalFace = choice(localFace)
+	finalNeck = choice(localNeck)
+	finalHand = choice(localHand)
+	#Check for a collared shirt.
+	if checkVariable(collarTest.getList(), finalTop):
+		localNeck += tieList.getList()
+		if isSilly:
+			localNeck +=tieList.getSilly()
 		finalNeck = choice(localNeck)
-		finalHand = choice(localHand)
-		#Check for a collared shirt.
-		if checkVariable(randomLists.collaredShirtList, finalTop):
-			localNeck += randomLists.tieList
-			finalNeck = choice(localNeck)
-		theAccessories = [finalHeld, finalHead, finalWaist, finalFace, finalNeck, finalHand]
-		finalAccessories = sample(theAccessories, 2)
-		#Such a minor check, but I wanted suspenders if appropriate..
-		if not checkVariable(randomLists.leglessSpeciesList, theSpecies):
-			localWaist.append("suspenders")
-			finalWaist = choice(localWaist)
-		
-		
-		#Check for winter/summer coat, 
-		weatherWear = checkVariable(randomLists.winterOuterwearList, finalOuter)
-		if checkVariable(randomLists.winterOuterwearList, finalOuter):
-			localShoes += randomLists.winterShoesList
+	theAccessories = [finalHeld, finalHead, finalWaist, finalFace, finalNeck, finalHand]
+	finalAccessories = sample(theAccessories, 2)
+	#Such a minor check, but I wanted suspenders if appropriate..
+	if not checkVariable(leglessTest.getList(), theSpecies):
+		localWaist.append("suspenders")
+		finalWaist = choice(localWaist)
+	
+	#Need to skip if bypass added everything.
+	#Don't like adding to the list outside of the ifelse loop, but not sure how to do this one.
+	if not bypassChecks == 1:
+	#Check for winter/summer coat, 
+		if checkVariable(outerLists.winter(), finalOuter):
+			localShoes += shoeLists.winter()
 			finalShoes = choice(localShoes)
-			localHead += randomLists.winterHeadAccessories
+			localHead += headLists.winter()
 			finalHead = choice(localHead)
-		elif checkVariable(randomLists.summerOuterwearList, finalOuter):
-			localShoes += randomLists.summerShoesList
+		elif checkVariable(outerLists.summer(), finalOuter):
+			localShoes += shoeLists.summer()
 			finalShoes = choice(localShoes)
-			localHead += randomLists.summerHeadAccessories
+			localHead += headLists.summer()
 			finalHead = choice(localHead)
-		
+	
 
 
 			
@@ -329,7 +319,7 @@ def buildOutfit(theSpecies, bypassChecks, theGender, crossGenderPref, isSilly):
 	#Remove the extra comma at the end.
 	theAccessories = theAccessories[:len(theAccessories)-1]
 	#Empty the bottom clothing if the species matches with legless species.
-	if checkVariable(randomLists.leglessSpeciesList, theSpecies):
+	if checkVariable(leglessTest.getList(), theSpecies):
 		theBottom = ""
 		theShoes = ""
 		
